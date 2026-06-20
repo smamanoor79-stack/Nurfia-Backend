@@ -1,15 +1,18 @@
-const express = require('express');
-const multer = require('multer');
-const { storage } = require('../config/cloudinary');
-const { protect } = require('../middleware/authMiddleware');
-const { isAdmin } = require('../middleware/authMiddleware');
-const router = express.Router();
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const upload = multer({ storage });
-
-router.post('/', protect, isAdmin, upload.single('image'), (req, res) => {
-  if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
-  res.json({ url: req.file.path });
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-module.exports = router;
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'nurfia-products',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
+  },
+});
+
+module.exports = { cloudinary, storage };
