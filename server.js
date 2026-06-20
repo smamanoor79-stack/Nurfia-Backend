@@ -31,9 +31,11 @@ app.get('/', (req, res) => {
 // Routes
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/upload', uploadRoutes);
 
 const cartRoutes = require('./routes/cartRoutes');
 app.use('/api/cart', cartRoutes);
