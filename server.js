@@ -1,0 +1,66 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
+
+const app = express();
+
+// Middleware
+const allowedOrigins = [
+  'http://localhost:5173',  
+  'http://localhost:5174',   
+  'https://nurfia-ecommerce-store.vercel.app',     
+  'https://nurfia-adminpanel.vercel.app' 
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true
+}));
+app.use(express.json());
+
+// Test route
+app.get('/', (req, res) => {
+  res.json({ message: 'Nurfia Backend is running!' });
+});
+// Routes
+const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
+
+app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
+
+const cartRoutes = require('./routes/cartRoutes');
+app.use('/api/cart', cartRoutes);
+
+const orderRoutes = require('./routes/orderRoutes');
+app.use('/api/orders', orderRoutes);
+
+const wishlistRoutes = require('./routes/wishlistRoutes');
+app.use('/api/wishlist', wishlistRoutes);
+
+app.use('/images', express.static('public/images'));
+
+// MongoDB Connect
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('MongoDB Connected!');
+    app.listen(process.env.PORT, () => {
+      console.log(`Server running on port ${process.env.PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log('MongoDB connection error:', err);
+  });
+
+  // Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: err.message || 'Something went wrong' });
+});
+
