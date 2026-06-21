@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Product = require('./models/Product');
 require('dotenv').config();
 
-const BASE_URL = 'http://localhost:5000';
-
 const products = [
   {
     name: "Asymmetric Tulle Midi Dress",
@@ -18,8 +16,8 @@ const products = [
     availability: true,
     rating: 4.0,
     reviews: 3,
-    image: "/images/women1.mp4",
-    images: ["/images/women1.mp4"],
+    image: "https://res.cloudinary.com/doknbffml/video/upload/v1782049699/nurfia-products/r6pqixicst5lee17ck8h.mp4",
+    images: ["https://res.cloudinary.com/doknbffml/video/upload/v1782049699/nurfia-products/r6pqixicst5lee17ck8h.mp4"],
     description: "Elegant asymmetric tulle midi dress perfect for summer occasions.",
     tags: ["sale"]
   },
@@ -36,8 +34,8 @@ const products = [
     availability: true,
     rating: 4.0,
     reviews: 3,
-    image: "/images/women2.webp",
-    images: ["/images/women2.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049700/nurfia-products/uxnvzzsf7nv4bxqtriib.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049700/nurfia-products/uxnvzzsf7nv4bxqtriib.webp"],
     description: "Minimalist creased-effect midi dress for effortless everyday style.",
     tags: ["new"]
   },
@@ -54,8 +52,8 @@ const products = [
     availability: true,
     rating: 3.3,
     reviews: 3,
-    image: "/images/women3.webp",
-    images: ["/images/women3.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049701/nurfia-products/fbrfeivccl5yfnn62vof.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049701/nurfia-products/fbrfeivccl5yfnn62vof.webp"],
     description: "Stunning draped strapless dress for special occasions.",
     tags: ["trending"]
   },
@@ -72,8 +70,8 @@ const products = [
     availability: true,
     rating: 4.67,
     reviews: 6,
-    image: "/images/women4.webp",
-    images: ["/images/women4.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049702/nurfia-products/jkx1scwwf4cz3qrr51vx.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049702/nurfia-products/jkx1scwwf4cz3qrr51vx.webp"],
     description: "Beautiful floral crepe midi dress with elegant print.",
     tags: ["sale", "trending"]
   },
@@ -90,8 +88,8 @@ const products = [
     availability: true,
     rating: 4.67,
     reviews: 6,
-    image: "/images/women5.webp",
-    images: ["/images/women5.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049703/nurfia-products/j2xdzqy2qtbl6lcubfl7.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049703/nurfia-products/j2xdzqy2qtbl6lcubfl7.webp"],
     description: "Romantic floral pattern midi dress with elegant draping.",
     tags: ["sale"]
   },
@@ -108,8 +106,8 @@ const products = [
     availability: true,
     rating: 3.3,
     reviews: 3,
-    image: "/images/women6.webp",
-    images: ["/images/women6.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049704/nurfia-products/w0m74ysecufkyhlqq3b8.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049704/nurfia-products/w0m74ysecufkyhlqq3b8.webp"],
     description: "Stunning lace-trimmed midi dress for a feminine look.",
     tags: ["new"]
   },
@@ -126,8 +124,8 @@ const products = [
     availability: true,
     rating: 4.4,
     reviews: 5,
-    image: "/images/men1.webp",
-    images: ["/images/men1.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049663/nurfia-products/wkbll732lrx1lt6tddnc.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049663/nurfia-products/wkbll732lrx1lt6tddnc.webp"],
     description: "Trendy graphic t-shirt with alternative culture prints.",
     tags: ["sale"]
   },
@@ -144,8 +142,8 @@ const products = [
     availability: true,
     rating: 4.0,
     reviews: 6,
-    image: "/images/men2.webp",
-    images: ["/images/men2.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049665/nurfia-products/ejosqcuhienxf6atqnc3.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049665/nurfia-products/ejosqcuhienxf6atqnc3.webp"],
     description: "Comfortable bermuda jogging shorts for casual wear.",
     tags: ["sale"]
   },
@@ -162,8 +160,8 @@ const products = [
     availability: true,
     rating: 4.3,
     reviews: 3,
-    image: "/images/men3.webp",
-    images: ["/images/men3.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049667/nurfia-products/uaeltmgyfltnjetammpf.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049667/nurfia-products/uaeltmgyfltnjetammpf.webp"],
     description: "Stylish cargo jogger trousers with multiple pockets.",
     tags: ["new"]
   },
@@ -180,8 +178,8 @@ const products = [
     availability: true,
     rating: 3.3,
     reviews: 3,
-    image: "/images/men4.webp",
-    images: ["/images/men4.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049669/nurfia-products/yn8jcgzqj7t1albyhnxf.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049669/nurfia-products/yn8jcgzqj7t1albyhnxf.webp"],
     description: "Trendy oversize knit top for a relaxed summer look.",
     tags: ["sale"]
   },
@@ -198,8 +196,8 @@ const products = [
     availability: true,
     rating: 3.7,
     reviews: 3,
-    image: "/images/men5.webp",
-    images: ["/images/men5.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049670/nurfia-products/w3fdmatgantnfbxio7d0.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049670/nurfia-products/w3fdmatgantnfbxio7d0.webp"],
     description: "Cool skater jorts for a casual streetwear style.",
     tags: ["sale"]
   },
@@ -216,8 +214,8 @@ const products = [
     availability: true,
     rating: 3.0,
     reviews: 6,
-    image: "/images/men6.webp",
-    images: ["/images/men6.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049672/nurfia-products/qnn87la4x066hvofp47o.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049672/nurfia-products/qnn87la4x066hvofp47o.webp"],
     description: "Unique striped crochet shirt for a bohemian summer vibe.",
     tags: ["new"]
   },
@@ -234,8 +232,8 @@ const products = [
     availability: true,
     rating: 4.3,
     reviews: 5,
-    image: "/images/Jacket1.webp",
-    images: ["/images/Jacket1.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049656/nurfia-products/ntbwgbt7vigrbdskz6d0.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049656/nurfia-products/ntbwgbt7vigrbdskz6d0.webp"],
     description: "Lightweight linen bomber jacket perfect for summer evenings.",
     tags: ["new"]
   },
@@ -252,8 +250,8 @@ const products = [
     availability: true,
     rating: 4.67,
     reviews: 3,
-    image: "/images/jacket2.webp",
-    images: ["/images/jacket2.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049657/nurfia-products/h6bpyu6m1ueisdwyv4vg.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049657/nurfia-products/h6bpyu6m1ueisdwyv4vg.webp"],
     description: "Cozy hoodie jacket for casual everyday wear.",
     tags: ["sale"]
   },
@@ -270,8 +268,8 @@ const products = [
     availability: true,
     rating: 4.5,
     reviews: 8,
-    image: "/images/jacket3.webp",
-    images: ["/images/jacket3.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049658/nurfia-products/ooyfefypdplusaiymrt5.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049658/nurfia-products/ooyfefypdplusaiymrt5.webp"],
     description: "Trendy oversized denim jacket for a casual chic look.",
     tags: ["trending"]
   },
@@ -288,26 +286,18 @@ const products = [
     availability: true,
     rating: 4.8,
     reviews: 12,
-    image: "/images/jacket4.webp",
-    images: ["/images/jacket4.webp"],
+    image: "https://res.cloudinary.com/doknbffml/image/upload/v1782049660/nurfia-products/hre4jketfufhilqkmrwj.webp",
+    images: ["https://res.cloudinary.com/doknbffml/image/upload/v1782049660/nurfia-products/hre4jketfufhilqkmrwj.webp"],
     description: "Edgy cropped leather biker jacket for a bold statement look.",
     tags: ["new", "trending"]
   }
 ];
 
-// Prepend BASE_URL to image paths so they resolve correctly
-// regardless of which frontend/admin project is running
-const productsWithFullUrls = products.map(p => ({
-  ...p,
-  image: p.image ? BASE_URL + p.image : p.image,
-  images: p.images ? p.images.map(img => BASE_URL + img) : p.images,
-}));
-
 mongoose.connect(process.env.MONGO_URI)
   .then(async () => {
     console.log('MongoDB Connected!');
     await Product.deleteMany();
-    await Product.insertMany(productsWithFullUrls);
+    await Product.insertMany(products);
     console.log('Products seeded successfully!');
     process.exit();
   })
